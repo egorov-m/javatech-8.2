@@ -1,2 +1,2 @@
-# javatech-8.1
+# javatech-8.2
 ДЗ: Spring Core.
