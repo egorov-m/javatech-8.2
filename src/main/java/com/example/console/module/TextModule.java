@@ -76,4 +76,21 @@ public class TextModule extends Module{
             e.printStackTrace();
         }
     }
+
+    public void countWords(String path) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String str = reader.readLine();
+            int count = 0;
+
+            while (str != null) {
+                count += str.split(" +").length;
+
+                str = reader.readLine();
+            }
+
+            System.out.printf("Количество слов в тексте: %d", count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
