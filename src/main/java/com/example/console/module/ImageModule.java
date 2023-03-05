@@ -11,12 +11,9 @@ import org.springframework.stereotype.Component;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Component
@@ -51,9 +48,9 @@ public class ImageModule extends Module {
 
     public void imageSize(String path) {
         try (InputStream stream = new FileInputStream(path)) {
-            BufferedImage bimg = ImageIO.read(stream);
-            int width          = bimg.getWidth();
-            int height         = bimg.getHeight();
+            BufferedImage bimg  = ImageIO.read(stream);
+            int width           = bimg.getWidth();
+            int height          = bimg.getHeight();
             System.out.printf("Размер изображения: %dpx / %dpx", width, height);
         } catch (IOException e) {
             e.printStackTrace();
