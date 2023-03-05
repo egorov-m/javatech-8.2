@@ -27,7 +27,7 @@ public abstract class Module {
         System.out.print("Поддерживаемы форматы: ");
         for (String ext : getAllowableExtensions()) System.out.printf("%s ", ext);
         System.out.print("\nОперации: ");
-        for (String ext : getOptions()) System.out.print(ext);
+        for (String ext : getOptions()) System.out.printf("%s ", ext);
         System.out.println();
     }
 }

@@ -1,9 +1,6 @@
 package com.example.console;
 
-import ch.qos.logback.classic.net.SyslogAppender;
 import com.example.console.module.Module;
-import com.example.console.module.TextModule;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.ApplicationArguments;
@@ -11,10 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.type.filter.AnnotationTypeFilter;
-import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.util.*;
 
 @SpringBootApplication
@@ -103,9 +98,13 @@ public class ConsoleApplication implements ApplicationRunner {
     }
 
     public static Optional<String> getExtensionByStringHandling(String filename) {
-        return Optional.ofNullable(filename)
-                .filter(f -> f.contains("."))
-                .map(f -> f.substring(filename.lastIndexOf(".") + 1));
+        File file = new File(filename);
+        if (file.isFile()) {
+            return Optional.ofNullable(filename)
+                    .filter(f -> f.contains("."))
+                    .map(f -> f.substring(filename.lastIndexOf(".") + 1));
+        } else {
+            return Optional.of("DIRECTORY");
+        }
     }
-
 }
