@@ -17,6 +17,7 @@ public class DirectoryModule extends Module {
 
     @Value(value = "#{${directoryModuleOptions}}")
     private List<String> options;
+
     @Override
     public String getTitle() {
         return title;
